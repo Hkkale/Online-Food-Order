@@ -1,8 +1,16 @@
 package com.hiten.easy_eat.request;
 
+import com.hiten.easy_eat.model.Address;
 import com.hiten.easy_eat.model.ContactInformation;
 
+import lombok.Data;
+
+
 import java.util.List;
+
+
+@Data
+
 
 public class CreateRestaurantRequest {
 
@@ -13,7 +21,7 @@ public class CreateRestaurantRequest {
 
     private String cuisineType;
 
-    private String addresss;
+    private Address address;
 
     private ContactInformation contactInformation;
 
