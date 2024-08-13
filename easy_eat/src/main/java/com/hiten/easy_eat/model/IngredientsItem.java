@@ -25,7 +25,7 @@ public class IngredientsItem {
     private Restaurant restaurant;
 
 
-    private boolean isStoke=true;
+    private boolean inStoke=true;
 
 
 
