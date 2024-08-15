@@ -2,7 +2,6 @@ package com.hiten.easy_eat.service;
 
 import com.hiten.easy_eat.model.Cart;
 import com.hiten.easy_eat.model.CartItem;
-import com.hiten.easy_eat.model.User;
 import com.hiten.easy_eat.request.AddCartItemRequest;
 
 public interface CartService {

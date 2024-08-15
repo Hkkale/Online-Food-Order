@@ -8,8 +8,11 @@ import com.hiten.easy_eat.repository.CartItemRepository;
 import com.hiten.easy_eat.repository.CartRepository;
 import com.hiten.easy_eat.request.AddCartItemRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
+@Service
 
 public class CartServiceImpl implements  CartService{
 
