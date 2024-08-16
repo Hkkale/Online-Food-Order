@@ -1,0 +1,14 @@
+.banner{
+  background-image: url("G:/PROJECTS/SpringBoot Projects/Onlie Food order/frontend/Frontend_easyEat/src/assets/images/foodbaner.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 90vh;
+}
+
+.cover{
+  width: 100%;
+  height: 90vh;
+  background-color: black;
+  opacity: 0.4;
+}
