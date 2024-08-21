@@ -7,7 +7,7 @@ import { IconButton} from '@mui/material';
 
 const RestaurantCard = () => {
   return (
-   <Card className='m-5 w-[18rem] '>
+   <Card className=' w-[18rem] '>
 
     <div className={`${true ? 'cursor-pointer ':'cursor-not-allowed'} relative`}>
 
