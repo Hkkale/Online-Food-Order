@@ -1,10 +1,11 @@
 import React from 'react'
 import Navbar from '../components/Navbar/Navbar'
-import Home from '@mui/icons-material/Home'
+import Home from "../components/Home/Home"
 import RestaurantDetails from '../components/Restaurant/RestaurantDetails'
 import Cart from '../components/Cart/Cart'
 import Profile from '../components/Profile/Profile'
 import { Routes , Route } from 'react-router-dom'
+import Auth  from '../components/Auth/Auth'
 const CustomerRouter = () => {
   return (
     <div>
@@ -21,6 +22,7 @@ const CustomerRouter = () => {
 
 
       </Routes>
+      <Auth/>
       
     </div>
   )

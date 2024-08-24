@@ -15,7 +15,7 @@ import { Form, Field, Formik } from "formik";
 // import * as Yup from "yup"
 
 const items = [1, 2];
-const style = {
+export const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
