@@ -1,11 +1,17 @@
 import React from "react";
-import {Avatar, Badge, IconButton} from "@mui/material"
+import {Avatar, Badge, IconButton,} from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search'
 import { pink } from "@mui/material/colors";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import  "./Navbar.css"
 import {Box} from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import PersonIcon from '@mui/icons-material/Person';
 const Navbar = () => {
+
+  const navigate = useNavigate();
+
+
   return (
     <Box className="px-5 sticky top-0 z-50 py-[.8rem] bg-[#e91e63] lg:px-20 flex justify-between">
       
@@ -26,7 +32,8 @@ const Navbar = () => {
 
 
         <div className="">
-          <Avatar sx={{bgcolor:"white", color: pink.A400}}></Avatar>
+          {false ? <Avatar sx={{bgcolor:"white", color: pink.A400}}>H</Avatar>
+          :<IconButton onClick={()=>navigate("/account/login")}><PersonIcon/></IconButton>}
         </div>
 
 
