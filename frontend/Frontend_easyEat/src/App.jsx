@@ -24,7 +24,7 @@ function App() {
 
   useEffect(()=>{
 
-    dispatch(getUser(auth.jwt ||jwt))
+    dispatch(getUser(auth.jwt || jwt));
 
   },[auth.jwt])
  
