@@ -30,10 +30,12 @@ export const getAllRestaurantsAction =(token)=>{
 
 export const getRestaurantById =(reqData)=>{
   return async (dispatch)=>{
+   
     dispatch({type:GET_RESTAURANT_BY_ID_REQUEST});
 
     try{
-      const response = await api.get(`/api/restaurants/${reqData.restaurantId}`,
+      console.log("getRestaurantById Called")
+      const response = await api.get(`api/restaurants/${reqData.restaurantId}`,
         {
         headers:{
           Authorization: `Bearer ${reqData.jwt}`
