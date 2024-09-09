@@ -28,7 +28,7 @@ const menuItemReducer= (state=initialState,action)=>{
     return{
       ...state,
       loading:false,
-      menuItems:[...state.menuItems,action.paylaod],
+      menuItems:[...state.menuItems,action.payload],
       message:"food created successfully"
     };
 
@@ -36,29 +36,29 @@ const menuItemReducer= (state=initialState,action)=>{
     return{
         ...state,
         loading:false,
-        menuItems:action.paylaod
+        menuItems:action.payload
     };
 
   case actionTypes.DELETE_MENU_ITEM_SUCCESS:
     return{
           ...state,
           loading:false,
-          menuItems:state.menuItems.filter((menuItem)=>menuItem.id!==action.paylaod.id)
+          menuItems:state.menuItems.filter((menuItem)=>menuItem.id!==action.payload.id)
     };
 
   case actionTypes.UPDATE_MENU_ITEMS_AVAILABILITY_SUCCESS:
-    console.log("updatef items id",action.paylaod.id)
+    console.log("updatef items id",action.payload.id)
     return{
           ...state,
           loading:false,
-          menuItems:state.menuItems.map((menuItem)=>menuItem.id===action.paylaod.id?action.paylaod:menuItem)
+          menuItems:state.menuItems.map((menuItem)=>menuItem.id===action.payload.id?action.payload:menuItem)
     };
 
   case actionTypes.SEARCH_MENU_ITEM_SUCCESS:
     return{
           ...state,
           loading:false,
-          search:action.paylaod
+          search:action.payload
     };
 
 
@@ -70,7 +70,7 @@ const menuItemReducer= (state=initialState,action)=>{
     return{
       ...state,
       loading:false,
-      error:action.paylaod,
+      error:action.payload,
       message:null
     };
 

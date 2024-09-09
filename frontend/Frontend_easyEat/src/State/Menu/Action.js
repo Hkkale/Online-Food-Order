@@ -35,12 +35,13 @@ export const getMenuItemsByRestaurantId =(reqdata)=>{
           Authorization: `Bearer ${reqdata.jwt}`
         },
       });
-      console.log("menu items by restaurants",data );
+      console.log("getMenuItemsByRestaurantId callled")
+      console.log("menu items by restaurantsssssssssssssss",data );
       dispatch({type:GET_MENU_ITEMS_BY_RESTAURANT_ID_SUCCESS,payload:data});
       
 
     } catch(error){
-      console.log(error);
+      console.log("error===========".error);
       dispatch({type:GET_MENU_ITEMS_BY_RESTAURANT_ID_FAILURE,payload:error})
     }
   };

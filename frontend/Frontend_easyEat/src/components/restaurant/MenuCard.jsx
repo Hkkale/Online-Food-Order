@@ -7,6 +7,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { Button } from "@mui/material";
+import { categorizeIngredients } from "../util/categarizedIngredients";
 
 const demo=[
   {
@@ -22,7 +23,7 @@ const demo=[
   }
 ];
 
-const MenuCard = () => {
+const MenuCard = ({item}) => {
 
   const handleCheckboxChange=(value)=>{
     console.log(value)
@@ -40,16 +41,15 @@ const MenuCard = () => {
         <div className="lg:flex items-center justify-between gap-5">
           <div className="lg:flex items-center lg:gap-5">
             <img className="w-[7rem] h-[7rem] object-cover"
-              src="https://cdn.pixabay.com/photo/2023/05/29/17/01/hamburger-8026582_1280.jpg"
+              src={item.images[0]}
               alt=""
             />
           </div>
           <div className="space-y-1 lg:space-y-5 lg:max-w-2xl">
-            <p className="font-semibold text-xl">Burger</p>
-            <p>₹499</p>
+            <p className="font-semibold text-xl">{item.name}</p>
+            <p>{item.price}</p>
             <p className="text-gray-400">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
-              dignissimos tempore ratione exercitationem id voluptatum.
+              {item.description}
             </p>
           </div>
         </div>
@@ -59,13 +59,13 @@ const MenuCard = () => {
           <div className="flex gap-5 flex-wrap ">
 
             {
-              demo.map((item)=>(
-                <div key={`category-${item.category}`}>
-                  <p >{item.category}</p>
+              Object.keys(categorizeIngredients(item.ingredients)).map((category)=>(
+                <div key={`category-${category}`}>
+                  <p >{category}</p>
                 <FormGroup >
                 
-                {item.ingredients.map((item)=>(
-                  <FormControlLabel  key={item} control={<Checkbox onChange={()=>(handleCheckboxChange(item))}  />} label={item} />
+                {categorizeIngredients(item.ingredients)[category].map((item)=>(
+                  <FormControlLabel  key={item.name} control={<Checkbox onChange={()=>(handleCheckboxChange(item))}  />} label={item.name} />
                 ))}
                 
               </FormGroup>
