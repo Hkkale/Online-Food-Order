@@ -29,7 +29,7 @@ const foodTypes = [
 const menulist = [1, 2, 3, 4, 5];
 
 const RestaurantDetails = () => {
-  const [foodType, setFooType] = useState("all");
+  const [foodType, setFoodType] = useState("all");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const jwt = localStorage.getItem("jwt");
@@ -39,6 +39,7 @@ const RestaurantDetails = () => {
   const { id, city } = useParams();
 
   const handleFilter = (e) => {
+    setFoodType(e.target.value);
     console.log(e.target.value, e.target.name);
   };
   const handleFilterCategory = (e,value) => {
@@ -59,13 +60,13 @@ const RestaurantDetails = () => {
       getMenuItemsByRestaurantId({
         jwt,
         restaurantId: id,
-        vegetarian: false,
-        nonveg: false,
-        seasonal: false,
-        foodCategory: selectedCategory ,
+        vegetarian: foodType ==="vegetarian",
+        nonveg: foodType ==="non_vegetarian",
+        seasonal: foodType ==="seasonal",
+        foodCategory:selectedCategory
       })
     );
-  },[selectedCategory]);
+  },[selectedCategory,foodType]);
 
   return (
     <div className="px-5 lg:px-20 ">
@@ -134,7 +135,7 @@ const RestaurantDetails = () => {
 
               <FormControl className="py-10 space-y-5 " component={"fieldset"}>
                 <RadioGroup
-                  onChange={handleFilterCategory}
+                  onChange={handleFilter}
                   name="food_category"
                   // value={foodTypes}
                 >
@@ -159,9 +160,9 @@ const RestaurantDetails = () => {
 
               <FormControl className="py-10 space-y-5 " component={"fieldset"}>
                 <RadioGroup
-                  onChange={handleFilter}
+                  onChange={handleFilterCategory}
                   name="food_type"
-                  value={foodTypes}
+                  value={selectedCategory}
                 >
                   {restaurant.categories.map((item) => (
                     <FormControlLabel

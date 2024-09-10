@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -8,6 +8,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { Button } from "@mui/material";
 import { categorizeIngredients } from "../util/categarizedIngredients";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../State/Cart/Action";
 
 const demo=[
   {
@@ -25,9 +27,37 @@ const demo=[
 
 const MenuCard = ({item}) => {
 
-  const handleCheckboxChange=(value)=>{
-    console.log(value)
+  const [selectedIngredients, setSelectedIngredients] = useState([]);
 
+  const dispatch = useDispatch();
+
+ 
+
+  const handleAddItemToCart= (e)=>{
+    e.preventDefault();
+
+    const reqData = {
+      token:localStorage.getItem("jwt"),
+      cartItem:{
+        foodId:item.id,
+        quantity:1,
+        ingredients:selectedIngredients,
+
+      }
+    }
+    dispatch(addItemToCart(reqData));
+    console.log("reqDattaaaaaaaaaaaaaa   ",reqData)
+
+  }
+
+  const handleCheckBoxChange =(itemName)=>{
+    console.log(itemName);
+    if(selectedIngredients.includes(itemName)){
+      setSelectedIngredients(selectedIngredients.filter((item)=>item !== itemName))
+    }
+    else{
+      setSelectedIngredients([...selectedIngredients,itemName])
+    }
   }
 
 
@@ -55,7 +85,7 @@ const MenuCard = ({item}) => {
         </div>
       </AccordionSummary>
       <AccordionDetails>
-        <form >
+        <form onSubmit={handleAddItemToCart} >
           <div className="flex gap-5 flex-wrap ">
 
             {
@@ -65,7 +95,7 @@ const MenuCard = ({item}) => {
                 <FormGroup >
                 
                 {categorizeIngredients(item.ingredients)[category].map((item)=>(
-                  <FormControlLabel  key={item.name} control={<Checkbox onChange={()=>(handleCheckboxChange(item))}  />} label={item.name} />
+                  <FormControlLabel  key={item.name} control={<Checkbox onChange={()=>(handleCheckBoxChange(item.name))}  />} label={item.name} />
                 ))}
                 
               </FormGroup>

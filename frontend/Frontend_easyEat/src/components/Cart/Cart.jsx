@@ -12,6 +12,7 @@ import React from "react";
 import AddressCard from "./AddressCard";
 import CartItem from "./CartItem";
 import { Form, Field, Formik } from "formik";
+import {useSelector} from "react-redux"
 // import * as Yup from "yup"
 
 const items = [1, 2];
@@ -51,6 +52,8 @@ const Cart = () => {
 
   const [open, setOpen] = React.useState(false);
 
+  const {cart} = useSelector(store=>store)
+
   const handleClose = () => setOpen(false);
 
   const handleSubmit = (value) => {
@@ -61,8 +64,8 @@ const Cart = () => {
     <div>
       <main className="lg:flex justify-between">
         <section className="lg:w-[30%] space-y-6 lg:min-h-screen pt-10">
-          {items.map((item) => (
-            <CartItem key={item} />
+          {cart.cart?.item.map((item) => (
+            <CartItem key={item} item={item} />
           ))}
 
           <Divider />
