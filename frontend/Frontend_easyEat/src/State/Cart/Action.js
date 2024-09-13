@@ -103,7 +103,7 @@ export const removeCartItem =({cartItemId,jwt})=>{
     dispatch({type: REMOVE_CARTITEM_REQUEST});
 
     try{
-      const {data} = await api.delete(`/api/cart-item/${cartItemId}/remove`,reqData.data,
+      const {data} = await api.delete(`/api/cart-item/${cartItemId}/remove`,
         {
         headers:{
           Authorization: `Bearer ${jwt}`

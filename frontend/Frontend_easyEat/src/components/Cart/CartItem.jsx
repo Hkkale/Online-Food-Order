@@ -16,12 +16,12 @@ const CartItem = ({item}) => {
 
   const jwt= localStorage.getItem("jwt")
 
-  const updatecartItem=(value)=>{
+  const handleupdateCartItem=(value)=>{
     if(value===-1 && item.quantity===1){
       handleRemoveCartItem()
     }
-    const data= {cartItemId:item.id,quantity: item.quantity+value,}
-    dispatch(updateCartItem({dta,jwt}))
+    const data= {cartItemId:item.id, quantity:item.quantity+value}
+    dispatch(updateCartItem({data,jwt}))
     
   }
 
@@ -43,12 +43,12 @@ const CartItem = ({item}) => {
             <div className='flext justify-between items-center'>
               <div className='flex items-center spaxe-x-1'>
 
-                <IconButton onClick={()=>updateCartItem(-1)}>
+                <IconButton onClick={()=>handleupdateCartItem(-1)}>
                   <RemoveCircleOutlineIcon/>
                 </IconButton>
                 <div className='w-5 h-5 text-xs flex items-center justify-center'>{item.quantity}</div>
 
-                <IconButton onClick={()=>updateCartItem(1)} >
+                <IconButton onClick={()=>handleupdateCartItem(1)} >
                 <AddCircleOutlineIcon/>
                 </IconButton>
 

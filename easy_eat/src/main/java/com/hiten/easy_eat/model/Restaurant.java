@@ -6,8 +6,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.aspectj.weaver.ast.Or;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +37,7 @@ public class Restaurant {
 
 
     private String openingHours;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Order> orders = new ArrayList<>();
 

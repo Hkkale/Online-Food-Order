@@ -19,6 +19,8 @@ export const createOrder =(reqData)=>{
       //   window.location.href=data.payment_url;
       // }
 
+      console.log(typeof(data));
+
       console.log("created order data", data)
       
       dispatch({type:CREATE_ORDER_SUCCESS,payload:data});
